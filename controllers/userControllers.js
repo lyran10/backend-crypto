@@ -3,19 +3,16 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const accessTokenTime = 60 * 60 * 1000;
-// 
-const createToken = (id) => {
-  // 
+
+const createToken = (id) => { 
   const accessToken = jwt.sign({ id: id },`${process.env.JWT_TOKEN}`, {
     expiresIn: `${accessTokenTime}ms`,
   });
   return { accessToken };
-
 };
 
 const createUser = async(req,res) => {
   const {email,password} = req.body
-
   let passwordToString = password.toString();
   let hashPassword = await bcrypt.hash(passwordToString, 10);
   try {
@@ -74,12 +71,10 @@ const findUser = async(req,res) => {
   const {id} = req.body
   try {
     const user = await User.find({_id : id})
-
-   return res.json({msg : user})
+    return res.json({msg : user})
   } catch (error) {
-    return res.json({msg : "Something went wrong please try again"})
-  }
-  
+    return res.json({msg : "Something went wrong please try again",error : error})
+  } 
 }
 
 const checkUser = (req, res, next) => {

@@ -4,7 +4,6 @@ const UserModal = mongoose.Schema({
   email : String,
   password : String,
   token : String,
-  
   watchlist : []
 })
 
