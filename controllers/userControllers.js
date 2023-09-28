@@ -73,6 +73,7 @@ const findUser = async(req,res) => {
     const user = await User.find({_id : id})
     return res.json({msg : user})
   } catch (error) {
+    console.log(error)
     return res.json({msg : "Something went wrong please try again",error : error})
   } 
 }
@@ -83,6 +84,7 @@ const checkUser = (req, res, next) => {
   if(token !== undefined){
     if (token === undefined || token === null) return res.status(400).json({ error: "token null" });
     try {
+      console.log(`token : ${token}`)
         const decoded =  jwt.verify(token,`${process.env.JWT_TOKEN}`)
         req.user = decoded
         next()
