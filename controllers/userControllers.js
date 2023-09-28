@@ -85,6 +85,7 @@ const checkUser = (req, res, next) => {
     if (token === undefined || token === null) return res.status(400).json({ error: "token null" });
     try {
       console.log(`token : ${token}`)
+      console.log(process.env.JWT_TOKEN)
         const decoded =  jwt.verify(token,`${process.env.JWT_TOKEN}`)
         req.user = decoded
         next()
