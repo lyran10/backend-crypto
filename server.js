@@ -4,12 +4,30 @@ const app = express()
 const userRouter = require("./routes/userRoutes.js")
 const watchlistRouter = require("./routes/watchlistRoutes.js")
 const dotenv = require("dotenv")
+const multer = require("multer")
+const path = require("path")
 const cors = require("cors")
 const cookieParser = require("cookie-parser")
 
 dotenv.config()
 
 connectDB()
+// const storage = multer.diskStorage({
+//   destination : (req, file, cb) => {
+//     cb(null,"images")
+//   },
+//   filename : (req, file, cb) => {
+//     console.log(file)
+//     cb(null,file.originalname)
+//   }
+// })
+
+// const upload = multer({storage : storage})
+
+// app.post("/uploads",upload.single("image"),(req,res) => {
+//   res.json(req)
+//   console.log(req.file)
+// })
 
 app.use(cors({ origin:["http://localhost:3000/","https://crypto-app-inf1.onrender.com"], credentials: true }));
 app.use(express.json());
