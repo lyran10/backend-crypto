@@ -1,10 +1,10 @@
 const mongoose = require("mongoose")
 
 const UserModal = mongoose.Schema({
-  email : String,
-  password : String,
-  token : String,
-  watchlist : [],
+  email: String,
+  password: String,
+  token: String,
+  watchlist: [],
   // img : {
   //   data : Buffer,
   //   contentType : String
@@ -12,6 +12,6 @@ const UserModal = mongoose.Schema({
 })
 
 
-const User = mongoose.model("User",UserModal)
+const User = mongoose.model("User", UserModal)
 
-module.exports = {User}
+module.exports = { User }

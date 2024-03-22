@@ -1,5 +1,5 @@
 const express = require("express")
-const {connectDB} = require("./connection/connection.js")
+const { connectDB } = require("./connection/connection.js")
 const app = express()
 const userRouter = require("./routes/userRoutes.js")
 const watchlistRouter = require("./routes/watchlistRoutes.js")
@@ -28,7 +28,7 @@ connectDB()
 //   console.log(req.file)
 // })
 
-app.use(cors({ origin:["http://localhost:3000","https://crypto-app-inf1.onrender.com"], credentials: true }));
+app.use(cors({ origin: ["http://localhost:3000", "https://crypto-app-inf1.onrender.com"], credentials: true }));
 app.use(cookieParser());
 
 app.use(express.json());
@@ -36,6 +36,6 @@ app.use("/api", userRouter);
 app.use("/api", watchlistRouter);
 
 
-app.listen(process.env.PORT,() => {
+app.listen(process.env.PORT, () => {
   console.log(`running on ${process.env.PORT}`)
 })

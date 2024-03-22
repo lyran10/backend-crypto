@@ -1,40 +1,40 @@
-const {User} = require("../modals/userModal.js")
+const { User } = require("../modals/userModal.js")
 
-const addToWatchlist = async(req, res) => {
-  const {id,coin} = req.body
+const addToWatchlist = async (req, res) => {
+  const { id, coin } = req.body
   try {
     const addCoin = await User.updateOne(
       { _id: id },
       { $push: { watchlist: coin } }
-   )
-    return res.status(200).json({coin : addCoin, status : true,addedCoin : coin,msg : "Coin added"})
+    )
+    return res.status(200).json({ coin: addCoin, status: true, addedCoin: coin, msg: "Coin added" })
   } catch (error) {
-    return res.json({status : false, msg : "Something went wrong try again later",addedCoin : coin})
+    return res.json({ status: false, msg: "Something went wrong try again later", addedCoin: coin })
   }
 };
 
-const getList = async(req, res) => {
-  const {id}  = req.body
+const getList = async (req, res) => {
+  const { id } = req.body
   try {
-    const data = await User.findById({_id : id})
-  return res.status(200).json({list : data})
+    const data = await User.findById({ _id: id })
+    return res.status(200).json({ list: data })
   } catch (error) {
     console.log(error)
   }
 };
 
-const deleteCoin = async(req, res) => {
-  const {id,coin} = req.body
+const deleteCoin = async (req, res) => {
+  const { id, coin } = req.body
   try {
     await User.updateOne(
       { _id: id },
       { $pull: { watchlist: coin } }
-   )
-  
-   res.status(200).json({msg : "Coin removed"})
+    )
+
+    res.status(200).json({ msg: "Coin removed" })
   } catch (error) {
-    res.status(200).json({error : "Something went wrong please try again"})
+    res.status(200).json({ error: "Something went wrong please try again" })
   }
 };
 
-module.exports = {addToWatchlist,getList,deleteCoin}
+module.exports = { addToWatchlist, getList, deleteCoin }
