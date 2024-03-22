@@ -1,6 +1,6 @@
 const {User} = require("../modals/userModal.js")
 
-const addToWatchlist = async(req, res,next) => {
+const addToWatchlist = async(req, res) => {
   const {id,coin} = req.body
   try {
     const addCoin = await User.updateOne(
@@ -35,8 +35,6 @@ const deleteCoin = async(req, res) => {
   } catch (error) {
     res.status(200).json({error : "Something went wrong please try again"})
   }
- 
-
 };
 
 module.exports = {addToWatchlist,getList,deleteCoin}

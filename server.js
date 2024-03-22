@@ -28,11 +28,13 @@ connectDB()
 //   console.log(req.file)
 // })
 
-app.use(cors({ origin:["http://localhost:3000/","https://crypto-app-inf1.onrender.com"], credentials: true }));
+app.use(cors({ origin:["http://localhost:3000","https://crypto-app-inf1.onrender.com"], credentials: true }));
+app.use(cookieParser());
+
 app.use(express.json());
 app.use("/api", userRouter);
 app.use("/api", watchlistRouter);
-app.use(cookieParser());
+
 
 app.listen(process.env.PORT,() => {
   console.log(`running on ${process.env.PORT}`)
