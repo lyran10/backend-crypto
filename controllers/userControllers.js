@@ -45,17 +45,15 @@ const loginUser = async (req, res) => {
     if ((password && userExists[0])) {
       if (bcrypt.compareSync(password, userExists[0].password)) {
         const token = createToken(userExists[0]._id);
-        // console.log(token.accessToken)
 
         const updated = await User.findOneAndUpdate({ _id: userExists[0]._id }, {
           $set: { token: token.accessToken },
         },
           { returnOriginal: false })
-
-        //  
+ 
         return res.cookie("token", token.accessToken, {
           path: "/",
-          domain: "https://crypto-app-inf1.onrender.com",
+          domain: "crypto-app-inf1.onrender.com",
           httpOnly: true,
           secure : true,
         }).status(201).send({ status: true, user: updated, msg: "Logged in successfully" })
