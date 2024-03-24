@@ -55,7 +55,7 @@ const loginUser = async (req, res) => {
           path: "/",
           domain: "crypto-app-inf1.onrender.com",
           httpOnly: true,
-          secure : false,
+          secure : true,
         }).status(201).send({ status: true, user: updated, msg: "Logged in successfully" })
 
       } else {
