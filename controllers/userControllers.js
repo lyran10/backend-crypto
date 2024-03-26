@@ -52,7 +52,7 @@ const loginUser = async (req, res) => {
           { returnOriginal: false })
  
         return res.cookie("token", token.accessToken, {
-          path: "/api",
+          path: "/",
           domain: "crypto-app-inf1.onrender.com",
           httpOnly: true,
           secure : true,
