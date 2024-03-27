@@ -56,7 +56,7 @@ const loginUser = async (req, res) => {
           domain: "crypto-app-api-irub.onrender.com",
           httpOnly: true,
           secure : true,
-          sameSite: 'None'
+          // sameSite: 'None'
         }).status(201).send({ status: true, user: updated, msg: "Logged in successfully" })
 
       } else {
