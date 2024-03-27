@@ -53,7 +53,7 @@ const loginUser = async (req, res) => {
  
         return res.cookie("token", token.accessToken, {
           path: "/",
-          domain: "https://crypto-app-inf1.onrender.com",
+          domain: "crypto-app-inf1.onrender.com",
           httpOnly: true,
           secure : true,
         }).status(201).send({ status: true, user: updated, msg: "Logged in successfully" })
