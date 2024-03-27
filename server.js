@@ -28,8 +28,8 @@ connectDB()
 //   console.log(req.file)
 // })
 
-app.use(cors({ origin: ["http://localhost:3000", "https://crypto-app-inf1.onrender.com","https://crypto-app-api-irub.onrender.com"], credentials: true }));
 app.use(cookieParser());
+app.use(cors({ origin: ["http://localhost:3000", "https://crypto-app-inf1.onrender.com","https://crypto-app-api-irub.onrender.com"], credentials: true }));
 
 app.use(express.json());
 app.use("/api", userRouter);
