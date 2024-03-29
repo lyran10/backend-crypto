@@ -50,9 +50,10 @@ const loginUser = async (req, res) => {
           $set: { token: token.accessToken },
         },
           { returnOriginal: false })
+
         return res.cookie("token", token.accessToken, {
           path: "/",
-          domain: "crypto-app-api-irub.onrender.com",
+          domain: "https://crypto-app-api-irub.onrender.com",
           httpOnly: true,
           secure : true,
           sameSite: 'None'
