@@ -53,7 +53,7 @@ const loginUser = async (req, res) => {
 
         return res.cookie("token", token.accessToken, {
           path: "/",
-          domain: "https://crypto-app-api-irub.onrender.com",
+          domain: "crypto-app-api-irub.onrender.com",
           httpOnly: true,
           secure : true,
           sameSite: 'None'
