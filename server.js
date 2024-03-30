@@ -36,10 +36,10 @@ app.use(express.json());
 app.use("/api", userRouter);
 app.use("/api", watchlistRouter);
 
-app.use(express.static(path.join(__dirname,'frontend-crypto', 'public')));
+app.use(express.static(path.join(__dirname, '*')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, "frontend-crypto",'public', 'index.html'));
+  res.sendFile(path.join(__dirname, '*', 'index.html'));
 });
 
 app.listen(process.env.PORT, () => {
