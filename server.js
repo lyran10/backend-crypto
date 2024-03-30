@@ -36,10 +36,10 @@ app.use(express.json());
 app.use("/api", userRouter);
 app.use("/api", watchlistRouter);
 
-app.use(express.static(path.join(__dirname,'client', 'public')));
+app.use(express.static(path.join(__dirname,"..",'client', 'public')));
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname,'client', 'public', 'index.html'));
+  res.sendFile(path.join(__dirname,"..",'client', 'public', 'index.html'));
 });
 
 app.listen(process.env.PORT, () => {
